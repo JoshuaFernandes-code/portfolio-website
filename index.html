@@ -1,139 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joshua Fernandes - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        header {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 1rem;
-        }
-        header h1 {
-            font-size: 2rem;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        section {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-        section h2 {
-            text-align: center;
-            color: #444;
-            margin-bottom: 1rem;
-        }
-        .skills-logos {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-            padding: 1rem;
-            border: 2px dashed #ccc;
-            border-radius: 12px;
-        }
-        .skills-logos img {
-            width: 60px;
-            height: 60px;
-            transition: transform 0.2s ease;
-        }
-        .skills-logos img:hover {
-            transform: scale(1.1);
-        }
-        .contact-icons {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        .contact-icons a {
-            color: #667eea;
-            margin: 0 15px;
-            font-size: 1.8rem;
-            transition: color 0.3s ease;
-        }
-        .contact-icons a:hover {
-            color: #764ba2;
-        }
-        footer {
-            text-align: center;
-            font-size: 0.9rem;
-            padding: 1rem;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Joshua Fernandes | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Mrj8F9F6Ww2j3l6gShfZp+Q9yqqo1kPM4ZV6M9x0RkLh4iA1zB1+F0dX5Do/EPWCBEQeM+bvJ0m9P3N8vLwLw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-alt: #0b1020;
+      --accent: #4f9cff;
+      --accent-soft: #9fc7ff1a;
+      --text: #f6f7fb;
+      --muted: #9ca3b8;
+      --card: #101626;
+      --border: #1a2238;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(3, 10, 40, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1d2b4a 0, #050814 50%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page-wrap {
+      min-height: 100vh;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 18px 48px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      font-family: "Fira Code", monospace;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #050814cc;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 42px;
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-main h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 0.98rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: #050814a8;
+    }
+
+    .pill i {
+      margin-right: 6px;
+      color: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f9cff, #6a7bff);
+      color: #020307;
+      font-weight: 500;
+      box-shadow: 0 12px 28px rgba(20, 69, 158, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(20, 69, 158, 0.75);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    /* Headshot card */
+    .hero-photo-card {
+      background: radial-gradient(circle at top, #26446b 0, #101626 45%, #050814 100%);
+      border-radius: 26px;
+      border: 1px solid #2a3753;
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(79, 156, 255, 0.2), transparent 55%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .headshot-wrapper {
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
+      margin: 10px 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .headshot-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-meta {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero-photo-meta h2 {
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .hero-photo-meta p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .social-chip {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #050814b3;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .social-chip:hover {
+      background: var(--accent-soft);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 14px 10px;
+      border-radius: var(--radius-lg);
+      background: #050814b3;
+      border: 1px solid var(--border);
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #101626;
+      border: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .skill-tag img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Placeholder cards */
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #050814b3;
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border);
+      padding: 16px 16px 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 2.4fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: #050814b3;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 18px 18px;
+      font-size: 0.9rem;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .contact-line i {
+      color: var(--accent);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #050814b3;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 18px 18px;
+    }
+
+    .contact-form label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-top: 4px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: #050814;
+      padding: 7px 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.86rem;
+      resize: vertical;
+      min-height: 32px;
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-photo-card {
+        order: -1;
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 <body>
-
+  <div class="page-wrap">
     <header>
-        <img src="images/headshot.webp" alt="Joshua Fernandes">
-        <h1>Joshua Fernandes</h1>
-        <p>Electronics & Computer Engineering Student | Aspiring Innovator</p>
+      <div class="logo-mark">
+        <span class="logo-dot"></span>
+        <span>JOSHUA FERNANDES</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>
-            Hi! I'm Joshua Fernandes, a passionate Electronics and Computer Engineering student with a strong
-            interest in software development, problem-solving, and innovative technologies. I am always eager to learn,
-            create, and improve my skills to shape impactful projects in the future.
-        </p>
-    </section>
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="about">
+        <div class="hero-main">
+          <h1>Hi, I’m <span>Joshua Fernandes</span>.</h1>
+          <p class="hero-sub">
+            A passionate developer building clean, performant web experiences and solving real-world problems through code.
+          </p>
 
-    <section>
-        <h2>Skills</h2>
-        <p style="text-align:center;">
-            I am proficient in several programming languages and technologies.
-        </p>
-        <div class="skills-logos">
-            <img src="images/python.webp" alt="Python">
-            <img src="images/cpp.webp" alt="C++">
-            <img src="images/javascript-logo.webp" alt="JavaScript">
-            <img src="images/html-logo.webp" alt="HTML">
-            <img src="images/css-logo.webp" alt="CSS">
-            <img src="images/react-logo.webp" alt="React">
-            <img src="images/node-logo.webp" alt="Node.js">
-        </div>
-    </section>
+          <div class="hero-tags">
+            <span class="pill"><i class="fa-solid fa-code"></i>Full‑stack inclined</span>
+            <span class="pill"><i class="fa-solid fa-location-dot"></i>Goa, India</span>
+            <span class="pill"><i class="fa-solid fa-rocket"></i>Open to opportunities</span>
+          </div>
 
-    <section>
-        <h2>Contact</h2>
-        <p style="text-align:center;">
-            Feel free to connect with me through the platforms below:
-        </p>
-        <div class="contact-icons">
-            <a href="mailto:joshua19132@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/joshua-fernandes-91392631a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/JoshuaFernandes-code" target="_blank"><i class="fab fa-github"></i></a>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <i class="fa-solid fa-folder-open"></i>
+              View Projects
+            </a>
+            <a href="https://github.com/JoshuaFernandes-code" target="_blank" rel="noreferrer" class="btn-ghost">
+              <i class="fa-brands fa-github"></i>
+              GitHub Profile
+            </a>
+          </div>
         </div>
-    </section>
+
+        <aside class="hero-photo-card">
+          <div class="headshot-wrapper">
+            <!-- headshot.webp is your own image -->
+            <img src="images/headshot.webp" alt="Joshua Fernandes headshot" />
+          </div>
+          <div class="hero-photo-meta">
+            <h2>Joshua Fernandes</h2>
+            <p>Engineering student · Web developer</p>
+          </div>
+          <div class="hero-social">
+            <a class="social-chip" href="https://github.com/JoshuaFernandes-code" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a class="social-chip" href="mailto:joshua19132@gmail.com">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a class="social-chip" href="tel:+918956977287">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-header">
+          <h2 class="section-title">Skills</h2>
+          <p class="section-sub">Technologies I’m comfortable working with.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-tag">
+            <img src="images/python.webp" alt="Python" />
+            <span>Python</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/cpp.webp" alt="C++" />
+            <span>C++</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/javascript-logo.webp" alt="JavaScript" />
+            <span>JavaScript</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/html-logo.webp" alt="HTML" />
+            <span>HTML5</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/css-logo.webp" alt="CSS" />
+            <span>CSS3</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/react-logo.webp" alt="React" />
+            <span>React</span>
+          </div>
+          <div class="skill-tag">
+            <img src="images/node-logo.webp" alt="Node.js" />
+            <span>Node.js</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certs">
+        <div class="section-header">
+          <h2 class="section-title">Certifications</h2>
+          <p class="section-sub">To be updated with recent achievements.</p>
+        </div>
+
+        <div class="card-row">
+          <article class="card">
+            <h3 class="card-title">Coming soon</h3>
+            <p>
+              This section will showcase key certifications, online courses, and workshops that highlight my skills and continuous learning.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <p class="section-sub">Selected work and experiments.</p>
+        </div>
+
+        <div class="card-row">
+          <article class="card">
+            <h3 class="card-title">Project gallery coming soon</h3>
+            <p>
+              This space will feature detailed write‑ups of my web, backend, and academic projects with links to live demos and source code.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-sub">Let’s build something together.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p>
+              Whether you have a project idea, internship opportunity, or just want to say hi, feel free to reach out. I’ll get back as soon as I can.
+            </p>
+            <div class="contact-line">
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 89569 77287</span>
+            </div>
+            <div class="contact-line">
+              <i class="fa-solid fa-envelope"></i>
+              <span>joshua19132@gmail.com</span>
+            </div>
+            <div class="contact-line">
+              <i class="fa-brands fa-github"></i>
+              <a href="https://github.com/JoshuaFernandes-code" target="_blank" rel="noreferrer">
+                github.com/JoshuaFernandes-code
+              </a>
+            </div>
+          </div>
+
+          
+        </div>
+      </section>
+    </main>
 
     <footer>
-        © 2025 Joshua Fernandes. All Rights Reserved.
+      © <span id="year"></span> Joshua Fernandes. All rights reserved.
     </footer>
+  </div>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
